@@ -10,4 +10,11 @@ def script = shell.parse(new File("data/metadata.groovy")) as DelegatingScript
 def metadata = [:]
 script.setDelegate(metadata)
 script.run()
-println new JsonBuilder(metadata).toPrettyString()
+
+def output = new JsonBuilder(metadata).toPrettyString()
+
+if (args.size() != 0) {
+    new File(args[0]).text = output
+} else {
+    println(output)
+}
