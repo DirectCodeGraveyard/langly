@@ -1,5 +1,7 @@
 package org.langly
 
+import org.codehaus.groovy.control.CompilerConfiguration
+
 class Langly {
     private Metadata metadata
     
