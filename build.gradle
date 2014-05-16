@@ -9,4 +9,10 @@ dependencies {
     testCompile "junit:junit:4.11"
 }
 
+test {
+    testLogging {
+        showStandardStreams = true
+    }
+}
+
 sourceSets.main.resources.srcDir "data/"
