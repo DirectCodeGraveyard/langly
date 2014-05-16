@@ -48,6 +48,16 @@ languages = [
         extensions: [
             ".coffee"    
         ]
+    ],
+    [
+        name: "CSON",
+        extensions: [
+            ".cson"    
+        ],
+        related: [
+            "JSON",
+            "CoffeeScript"
+        ]
     ]
 ]
 
