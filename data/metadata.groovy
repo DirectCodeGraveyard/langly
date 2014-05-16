@@ -1,3 +1,7 @@
+/*
+  Metadata for Langly
+*/
+
 /* Language List */
 languages = [
     [
@@ -39,6 +43,7 @@ languages = [
     ],
     [
         name: "JSON",
+        type: "data",
         extensions: [
             ".json"
         ]
@@ -51,6 +56,7 @@ languages = [
     ],
     [
         name: "CSON",
+        type: "data",
         extensions: [
             ".cson"
         ],
@@ -72,7 +78,28 @@ binary_extensions = [
     ".exe"
 ]
 
-/* Regular Expressions Matching Ignored Files */
+/*
+  Regular Expressions Matching Ignored Files
+  Most of this is copied from liguist (https://github.com/github/linguist/blob/master/lib/linguist/vendor.yml)
+  Due to the use of regex, slashy strings are recommended
+  These are used for things like git repositories
+*/
 ignored_files = [
-    ""
+    /* LICENSE, README, git config files */
+    /^COPYING$/,
+    /LICENSE$/,
+    /License$/,
+    /gitattributes$/,
+    /gitignore$/,
+    /gitmodules$/,
+    /^README$/,
+    /^readme$/,
+    /* Samples */
+    /^[Ss]amples\//,
+    /* Gradle */
+    /(^|\/)gradlew$/,
+    /(^|\/)gradle\/wrapper\//,
+    /node_modules\//,
+    /bower_components\//
 ]
+
