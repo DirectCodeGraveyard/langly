@@ -71,3 +71,8 @@ binary_extensions = [
     ".obj",
     ".exe"
 ]
+
+/* Regular Expressions Matching Ignored Files */
+ignored_files = [
+    ""
+]
