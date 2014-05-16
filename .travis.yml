@@ -1,7 +1,6 @@
 language: groovy
 jdk:
   - oraclejdk8
-install:
-  - TERM=dumb gradle
+install: echo "No Dependencies"
 script:
-  - TERM=dumb gradle jar
+  - TERM=dumb gradle test
