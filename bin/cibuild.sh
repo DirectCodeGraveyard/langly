@@ -11,7 +11,8 @@ function execute() {
 }
 
 # Begin Setup Groovy #
-if [ ! -d "${HOME}/.gvm" ]; then
+which gvm > /dev/null 2>&1
+if [ $? -ne 0 ]; then
     execute curl -s get.gvmtool.net | bash
     source ~/.gvm/bin/gvm-init.sh
     execute echo 'gvm_auto_answer=true' > ~/.gvm/etc/config
