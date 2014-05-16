@@ -3,4 +3,4 @@ jdk:
   - oraclejdk8
 
 script:
-  - bash bin/cibuild.sh
+  - bash bin/build.sh
