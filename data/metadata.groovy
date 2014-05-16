@@ -10,49 +10,49 @@ languages = [
     [
         name: "Java",
         extensions: [
-            ".java"    
+            ".java"
         ]
     ],
     [
         name: "JavaScript",
         extensions: [
-            ".js"    
+            ".js"
         ]
     ],
     [
         name: "Scala",
         extensions: [
-            ".scala"    
+            ".scala"
         ]
     ],
     [
         name: "Ruby",
         extensions: [
-            ".rb"    
+            ".rb"
         ]
     ],
     [
         name: "Python",
         extensions: [
-            ".py"    
+            ".py"
         ]
     ],
     [
         name: "JSON",
         extensions: [
-            ".json"    
+            ".json"
         ]
     ],
     [
         name: "CoffeeScript",
         extensions: [
-            ".coffee"    
+            ".coffee"
         ]
     ],
     [
         name: "CSON",
         extensions: [
-            ".cson"    
+            ".cson"
         ],
         related: [
             "JSON",
