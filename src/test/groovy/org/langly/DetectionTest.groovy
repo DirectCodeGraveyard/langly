@@ -9,7 +9,7 @@ class DetectionTest {
     
     @Before
     void before() {
-        this.langly = Langly.create()
+        this.langly = new Langly()
     }
     
     @Test
