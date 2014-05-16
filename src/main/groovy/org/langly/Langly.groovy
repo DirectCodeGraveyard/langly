@@ -26,7 +26,7 @@ class Langly {
     
     boolean isLanguage(Language lang, CodeFile file) {
         for (String ext in lang.extensions) {
-            if (file.name.endsWith(ext) {
+            if (file.name.endsWith(ext)) {
                 return true
             }
         }
