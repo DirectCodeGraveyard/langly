@@ -2,10 +2,10 @@ package org.langly
 
 class CodeFile {
     private byte[] bytes
-    String filename
+    String name
     
     CodeFile(String filename, byte[] bytes) {
-        this.filename = filename
+        this.name = filename
         this.bytes = bytes
     }
     

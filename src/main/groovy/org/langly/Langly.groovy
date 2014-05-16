@@ -24,5 +24,30 @@ class Langly {
         this.metadata = meta as Metadata
     }
     
-    Language detect() { null }
+    boolean isLanguage(Language lang, CodeFile file) {
+        for (String ext in lang.extensions) {
+            if (file.name.endsWith(ext) {
+                return true
+            }
+        }
+        return false
+    }
+    
+    Language detect(CodeFile file) {
+        for (language in metadata.languages) {
+            if (isLanguage(language, file)) {
+                return language
+            }
+        }
+        return null
+    }
+    
+    Language language(String name) {
+        for (language in metadata.languages) {
+            if (language.name == name) {
+                return true
+            }
+        }
+        return false
+    }
 }

@@ -6,6 +6,7 @@ repositories {
 
 dependencies {
     compile "org.codehaus.groovy:groovy-all:2.3.0"
+    testCompile "junit:junit:4.11"
 }
 
 sourceSets.main.resources.srcDir "data/"
