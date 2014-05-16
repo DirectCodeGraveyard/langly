@@ -1,4 +1,6 @@
-#!/bin/bash -
+#!/bin/bash
+
+# Basic CI Build
 
 function execute() {
     ${@}
