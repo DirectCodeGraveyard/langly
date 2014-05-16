@@ -50,3 +50,14 @@ languages = [
         ]
     ]
 ]
+
+/* File Extensions that are commonly binary files */
+binary_extensions = [
+    ".jar",
+    ".zip",
+    ".gz",
+    ".tar",
+    ".bz2",
+    ".obj",
+    ".exe"
+]
