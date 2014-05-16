@@ -62,6 +62,7 @@ testDetection = { CodeFile file ->
 testDetection(new CodeFile("test.groovy", """
 println 'Hello World'
 """))
+
 testDetection(new CodeFile("Example.java", """\
 public class Example {
     public static void main(String[] args) {
@@ -69,23 +70,34 @@ public class Example {
     }
 }
 """))
+
 testDetection(new CodeFile("test.py", """\
 print('Hello World')
 """))
+
 testDetection(new CodeFile("test.rb", """\
 puts 'Hello World'
 """))
+
 testDetection(new CodeFile("test.scala", """\
 println("Hello World!")
 """))
+
 testDetection(new CodeFile("test.json", """\
 {
     "test": "Hello World"
 }
 """))
+
 testDetection(new CodeFile("test.coffee", """\
 console.log "Hello World"
 """))
+
 testDetection(new CodeFile("test.js", """\
 console.log("Hello World");
+"""))
+
+testDetection(new CodeFile("test.cson", """\
+"example":
+    "message": "Hello World"
 """))
