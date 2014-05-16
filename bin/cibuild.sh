@@ -11,16 +11,11 @@ function execute() {
 }
 
 # Begin Setup Groovy #
-which gvm > /dev/null 2>&1
-if [ $? -ne 0 ]; then
-    execute curl -s get.gvmtool.net | bash
-    source ~/.gvm/bin/gvm-init.sh
-    execute echo 'gvm_auto_answer=true' > ~/.gvm/etc/config
-    execute echo 'gvm_auto_selfupdate=false' >> ~/.gvm/etc/config
-    execute gvm install groovy 2.3.0
-else
-    source ~/.gvm/bin/gvm-init.sh
-fi
+execute curl -s get.gvmtool.net | bash
+source ~/.gvm/bin/gvm-init.sh
+execute echo 'gvm_auto_answer=true' > ~/.gvm/etc/config
+execute echo 'gvm_auto_selfupdate=false' >> ~/.gvm/etc/config
+execute gvm install groovy 2.3.0
 # End Setup Groovy #
 
 execute gvm use groovy 2.3.0
