@@ -104,3 +104,11 @@ try {
 } catch(e) {
     error "vendored: generated expression '${vendoredRegex}' is invalid"
 }
+
+if (metadata.keySet().size() != 3) {
+    def newm = metadata.clone()
+    newm.remove("vendored")
+    newm.remove("languages")
+    newm.remove("binary_extensions")
+    warning "found unused definitions: ${newm.keySet().join(', ')}"
+}
