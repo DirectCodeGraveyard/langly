@@ -58,4 +58,21 @@ class Langly {
         }
         return null
     }
+
+    List<String> ignoredFiles() {
+        return metadata.ignored_files
+    }
+
+    List<String> binaryExtensions() {
+        return metadata.binary_extensions
+    }
+
+    boolean isIgnoredFile(File file) {
+        for (i in ignoredFiles()) {
+            if (file.path.matches(i)) {
+                 return true
+            }
+        }
+        return false
+    }
 }

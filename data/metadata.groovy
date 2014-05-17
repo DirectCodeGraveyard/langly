@@ -142,7 +142,7 @@ languages = [
     [
         name: "CSS",
         extensions: [
-            ".css"    
+            ".css"
         ]
     ],
     [
