@@ -9,4 +9,4 @@ install:
   - export GROOVY_HOME="$(pwd)/groovy-2.3.0"
 script:
   - TERM=dumb ./gradlew test
-  - ${GROOVY_HOME}/bin/groovy bin/lint.sh
+  - ${GROOVY_HOME}/bin/groovy bin/lint.groovy
