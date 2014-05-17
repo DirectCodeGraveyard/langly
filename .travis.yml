@@ -4,7 +4,7 @@ jdk:
 install: 
   - TERM=dumb ./gradlew --version
   - wget --quiet http://dl.bintray.com/groovy/maven/groovy-binary-2.3.0.zip -O groovy.zip
-  - unzip groovy.zip -qq
+  - unzip -qq groovy.zip
   - rm groovy.zip
   - export GROOVY_HOME="$(pwd)/groovy-2.3.0"
 script:
