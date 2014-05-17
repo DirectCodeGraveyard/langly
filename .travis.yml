@@ -8,5 +8,5 @@ install:
   - rm groovy.zip
   - export GROOVY_HOME="$(pwd)/groovy-2.3.0"
 script:
-  - TERM=dumb ./gradlew test
   - ${GROOVY_HOME}/bin/groovy bin/lint.groovy
+  - TERM=dumb ./gradlew test
