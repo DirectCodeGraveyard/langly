@@ -1,25 +1,56 @@
 package org.langly
 
+import groovy.transform.CompileStatic
+
+@CompileStatic
 class CodeFile {
-    private byte[] bytes
-    String name
-    
-    CodeFile(String filename, byte[] bytes) {
+    private File file
+    private String code
+    private String name
+
+    CodeFile(String filename) {
         this.name = filename
-        this.bytes = bytes
-    }
-    
-    CodeFile(String filename, String code) {
-        this.name = filename
-        this.bytes = code.bytes
-    }
-    
-    CodeFile(String filename, File file) {
-        this.name = filename
-        this.bytes = file.bytes
     }
 
-    String getCode() {
-        new String(bytes)
+    CodeFile(String filename, String code) {
+        this.name = filename
+        this.code = code
+    }
+
+    CodeFile(File file) {
+        this.name = file.name
+    }
+
+    Reader code() {
+        code ? new StringReader(code) : file.newReader()
+    }
+
+    String name() {
+        name ?: file.name
+    }
+
+    boolean vendored() {
+        Langly.isVendored(this)
+    }
+
+    Language detect() {
+        Langly.detect(this)
+    }
+
+    String mimetype() {
+        def detected = detect()
+        if (detected) {
+            return detected.mimetype ?: "text/plain"
+        } else {
+            return null
+        }
+    }
+
+    boolean binary() {
+        mimetype() ? true : false
+    }
+
+    Language language() {
+        detect()
     }
 }

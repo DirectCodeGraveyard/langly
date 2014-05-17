@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
 apply plugin: "groovy"
 
 repositories {
@@ -10,10 +12,27 @@ dependencies {
 }
 
 test {
+    maxParallelForks = 1
+    forkEvery = 0
+
     testLogging {
+        showExceptions = true
         showStandardStreams = true
+        exceptionFormat "full"
     }
 }
 
-sourceSets.main.resources.srcDir "data/"
-sourceSets.test.resources.srcDir "data/samples/"
+sourceSets {
+    main {
+        resources {
+            srcDir "${projectDir}/data/"
+        }
+    }
+
+    test {
+        resources {
+            srcDir "${projectDir}/data/samples"
+        }
+    }
+}
+

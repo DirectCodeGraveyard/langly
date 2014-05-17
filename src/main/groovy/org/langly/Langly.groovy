@@ -1,47 +1,50 @@
 package org.langly
 
 import org.codehaus.groovy.control.CompilerConfiguration
+import groovy.transform.CompileStatic
+import java.util.regex.Pattern
 
+@CompileStatic
 class Langly {
-    private Map<String, Object> metadata
-    private List<Language> languages
+    static Map<String, Object> metadata
 
-    static Langly create() {
-        return new Langly()
-    }
+    static String vendoredPattern
 
-    Langly() {
+    static {
         loadMetadata()
     }
 
-    private void loadMetadata() {
+    static List<Language> languages
+
+    private static void loadMetadata() {
         def cc = new CompilerConfiguration()
         cc.scriptBaseClass = DelegatingScript.class.name
         def shell = new GroovyShell(cc)
-        def script = shell.parse(this.class.classLoader.getResourceAsStream("metadata.groovy").newReader()) as DelegatingScript
+        def script = shell.parse(Langly.classLoader.getResourceAsStream("metadata.groovy").newReader() as Reader) as DelegatingScript
         def meta = [:]
         script.setDelegate(meta)
         script.run()
         metadata = meta
         languages = { ->
 	    def l = []
-            metadata.languages.each { it ->
+            metadata.languages.each { Map it ->
 		l << new Language(it)
             }
             l
         }()
+        vendoredPattern = metadata.vendored.collect { String it -> Pattern.quote(it) }.join("|")
     }
 
-    boolean isLanguage(Language lang, CodeFile file) {
+    static boolean isLanguage(Language lang, CodeFile file) {
         for (String ext in lang.extensions) {
-            if (file.name.endsWith(ext)) {
+            if (file.name().endsWith(ext)) {
                 return true
             }
         }
         return false
     }
 
-    Language detect(CodeFile file) {
+    static Language detect(CodeFile file) {
         for (language in languages) {
             if (isLanguage(language, file)) {
                 return language
@@ -50,7 +53,7 @@ class Langly {
         return null
     }
 
-    Language language(String name) {
+    static Language language(String name) {
         for (language in languages) {
             if (language.name == name) {
                 return language
@@ -59,20 +62,15 @@ class Langly {
         return null
     }
 
-    List<String> ignoredFiles() {
-        return metadata.ignored_files
+    static List<String> vendored() {
+        metadata.vendored as List<String>
     }
 
-    List<String> binaryExtensions() {
-        return metadata.binary_extensions
+    static List<String> binaryExtensions() {
+        metadata.binary_extensions as List<String>
     }
 
-    boolean isIgnoredFile(File file) {
-        for (i in ignoredFiles()) {
-            if (file.path.matches(i)) {
-                 return true
-            }
-        }
-        return false
+    static boolean isVendored(CodeFile file) {
+        file.name().matches(vendoredPattern)
     }
 }
