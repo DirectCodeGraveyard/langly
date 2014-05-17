@@ -13,16 +13,15 @@ class DetectionTest {
     }
 
     @Test
-    void testGroovyDetection() {
-        assertTrue(langly.detect(new CodeFile("test.groovy", """
-            println "Hello World"
-        """.stripIndent())) == langly.language("Groovy"))
-    }
-
-    @Test
-    void testJavaScriptDetection() {
-        assertTrue(langly.detect(new CodeFile("test.js", """
-            console.log("Hello World");
-        """.stripIndent())) == langly.language("JavaScript"))
+    void testSamplesDetection() {
+        for (lang in langly.languages) {
+            def filename = "test.${lang.extensions.first()}"
+            def stream = this.class.classLoader.getResourceAsStream("samples/${lang.name}/${filename}")
+            if (stream != null) {
+                def code = stream.text
+                def file = new CodeFile(filename, code)
+                assertTrue(langly.detect(file) == lang, "Failed to detect language '${lang.name}' from sample!")
+            }
+	}
     }
 }

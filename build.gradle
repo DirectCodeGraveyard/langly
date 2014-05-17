@@ -16,3 +16,4 @@ test {
 }
 
 sourceSets.main.resources.srcDir "data/"
+sourceSets.test.resources.srcDir "data/samples/"
