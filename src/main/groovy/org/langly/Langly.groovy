@@ -3,8 +3,9 @@ package org.langly
 import org.codehaus.groovy.control.CompilerConfiguration
 
 class Langly {
-    private Metadata metadata
-    
+    private Map<String, Object> metadata
+    private List<Language> languages
+
     static Langly create() {
         return new Langly()
     }
@@ -17,11 +18,18 @@ class Langly {
         def cc = new CompilerConfiguration()
         cc.scriptBaseClass = DelegatingScript.class.name
         def shell = new GroovyShell(cc)
-        def script = shell.parse(this.class.classLoader.getResourceAsStream("metadata.groovy")) as DelegatingScript
+        def script = shell.parse(this.class.classLoader.getResourceAsStream("metadata.groovy").newReader()) as DelegatingScript
         def meta = [:]
         script.setDelegate(meta)
         script.run()
-        this.metadata = meta as Metadata
+        metadata = meta
+        languages = { ->
+	    def l = []
+            metadata.languages.each { it ->
+		l << new Language(it)
+            }
+            l
+        }()
     }
     
     boolean isLanguage(Language lang, CodeFile file) {
@@ -34,7 +42,7 @@ class Langly {
     }
     
     Language detect(CodeFile file) {
-        for (language in metadata.languages) {
+        for (language in languages) {
             if (isLanguage(language, file)) {
                 return language
             }
@@ -43,11 +51,11 @@ class Langly {
     }
     
     Language language(String name) {
-        for (language in metadata.languages) {
+        for (language in languages) {
             if (language.name == name) {
-                return true
+                return language
             }
         }
-        return false
+        return null
     }
 }

@@ -10,10 +10,16 @@ class CodeFile {
     }
     
     CodeFile(String filename, String code) {
-        super(filename, code.bytes)
+        this.name = filename
+        this.bytes = code.bytes
     }
     
     CodeFile(String filename, File file) {
-        super(filename, file.bytes)
+        this.name = filename
+        this.bytes = file.bytes
+    }
+
+    String getCode() {
+        new String(bytes)
     }
 }
