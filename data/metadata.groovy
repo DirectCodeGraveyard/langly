@@ -67,6 +67,114 @@ languages = [
             "JSON",
             "CoffeeScript"
         ]
+    ],
+    [
+        name: "C",
+        extensions: [
+            ".c",
+            ".w"
+        ]
+    ],
+    [
+        name: "C++",
+        extensions: [
+            ".cpp",
+            ".h",
+            ".cxx",
+            ".c++"
+        ]
+    ],
+    [
+        name: "D",
+        extensions: [
+            ".d",
+            ".di"
+        ]
+    ],
+    [
+        name: "HTML",
+        type: "markup",
+        extensions: [
+            ".html",
+            ".htm",
+            ".xhtml"
+        ]
+    ],
+    [
+        name: "Go",
+        extensions: [
+            ".go"
+        ]
+    ],
+    [
+        name: "Bash",
+        extensions: [
+            ".sh",
+            ".bash"
+        ]
+    ],
+    [
+        name: "Erlang",
+        extensions: [
+            ".erl",
+            ".hrl"
+        ]
+    ],
+    [
+        name: "ANTLR",
+        extensions: [
+            ".g4"
+        ]
+    ],
+    [
+        name: "Markdown",
+        extensions: [
+            ".md",
+            ".markdown"
+        ]
+    ],
+    [
+        name: "C#",
+        extensions: [
+            ".cs"
+        ]
+    ],
+    [
+        name: "CSS",
+        extensions: [
+            ".css"    
+        ]
+    ],
+    [
+        name: "Ceylon",
+        extensions: [
+            ".ceylon"
+        ]
+    ],
+    [
+        name: "Less",
+        type: "markup",
+        extensions: [
+            ".less"
+        ],
+        related: [
+            "CSS"
+        ]
+    ],
+    [
+        name: "Lua",
+        extensions: [
+            ".lua"
+        ]
+    ],
+    [
+        name: "PHP",
+        extensions: [
+            ".php",
+            ".php3",
+            ".php4",
+            ".php5"
+        ]
     ]
 ]
 
