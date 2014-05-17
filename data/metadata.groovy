@@ -211,7 +211,7 @@ languages = [
     ],
     [
         name: "XML",
-        type: "markup"
+        type: "markup",
         extensions: [
             ".xml"    
         ]
