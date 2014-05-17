@@ -9,11 +9,11 @@ class Langly {
     static Langly create() {
         return new Langly()
     }
-    
+
     Langly() {
         loadMetadata()
     }
-    
+
     private void loadMetadata() {
         def cc = new CompilerConfiguration()
         cc.scriptBaseClass = DelegatingScript.class.name
@@ -31,7 +31,7 @@ class Langly {
             l
         }()
     }
-    
+
     boolean isLanguage(Language lang, CodeFile file) {
         for (String ext in lang.extensions) {
             if (file.name.endsWith(ext)) {
@@ -40,7 +40,7 @@ class Langly {
         }
         return false
     }
-    
+
     Language detect(CodeFile file) {
         for (language in languages) {
             if (isLanguage(language, file)) {
@@ -49,7 +49,7 @@ class Langly {
         }
         return null
     }
-    
+
     Language language(String name) {
         for (language in languages) {
             if (language.name == name) {
