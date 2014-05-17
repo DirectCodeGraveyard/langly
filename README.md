@@ -2,7 +2,7 @@
 
 Language Utility Belt in Groovy.
 
-Similar to [Liguist](https://github.com/github/linguist/), it can do many different Programming Language related things.
+Similar to [Linguist](https://github.com/github/linguist/), it can do many different Programming Language related things.
 
 ## Goals
 
