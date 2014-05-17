@@ -9,6 +9,9 @@ languages = [
         extensions: [
             ".groovy",
             ".gvy"
+        ],
+        related: [
+            "Java"
         ]
     ],
     [
