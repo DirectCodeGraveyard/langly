@@ -164,7 +164,9 @@ languages = [
     [
         name: "Lua",
         extensions: [
-            ".lua"
+            ".lua",
+            ".nse",
+            ".rbxs"
         ]
     ],
     [
@@ -174,6 +176,61 @@ languages = [
             ".php3",
             ".php4",
             ".php5"
+        ]
+    ],
+    [
+        name: "Dogescript",
+        extensions: [
+            ".djs"    
+        ]
+    ],
+    [
+        name: "Fourth",
+        extensions: [
+            ".fth",
+            ".4th"
+        ]
+    ],
+    [
+        name: "JSON5",
+        type: "data",
+        extensions: [
+            ".json5"    
+        ],
+        related: [
+            "JSON"    
+        ]
+    ],
+    [
+        name: "Kotlin",
+        extensions: [
+            ".kt",
+            ".ktm",
+            ".kts"
+        ]
+    ],
+    [
+        name: "XML",
+        type: "markup"
+        extensions: [
+            ".xml"    
+        ]
+    ],
+    [
+        name: "YAML",
+        extensions: [
+            ".yml",
+            ".yaml"
+        ]
+    ],
+    [
+        name: "Jade",
+        type: "markup",
+        extensions: [
+            ".jade"    
+        ],
+        related: [
+            "HTML"    
         ]
     ]
 ]
@@ -213,4 +270,3 @@ vendored = [
     /node_modules\/(.*)/,
     /bower_components\/(.*)/
 ]
-
