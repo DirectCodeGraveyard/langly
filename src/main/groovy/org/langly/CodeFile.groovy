@@ -29,8 +29,8 @@ class CodeFile {
         name ?: file.name
     }
 
-    boolean vendored() {
-        Langly.isVendored(this)
+    boolean vendor() {
+        Langly.isVendorFile(this)
     }
 
     Language detect() {

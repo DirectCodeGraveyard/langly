@@ -190,27 +190,27 @@ binary_extensions = [
 ]
 
 /*
-  Regular Expressions Matching Vendored Files
+  Regular Expressions Matching Vendor Files
   Most of this is copied from liguist (https://github.com/github/linguist/blob/master/lib/linguist/vendor.yml)
-  Due to the use of regex, slashy strings are recommended
+  No escaping is necessary, as it is auto-quoted.
   These are used for things like git repositories
 */
-vendored = [
+vendor = [
     /* LICENSE, README, git config files */
-    /^COPYING$/,
-    /LICENSE$/,
-    /License$/,
-    /.gitattributes$/,
-    /.gitignore$/,
-    /.gitmodules$/,
-    /^README$/,
-    /^readme$/,
+    '^COPYING$',
+    'LICENSE$',
+    'License$',
+    '.gitattributes$',
+    '.gitignore$',
+    '.gitmodules$',
+    '^README$',
+    '^readme$',
     /* Samples */
-    /^[Ss]amples\/(.*)/,
+    '^[Ss]amples/(.*)',
     /* Gradle */
-    /(^|\/)gradlew$/,
-    /(^|\/)gradle\/wrapper\/(.*)/,
-    /node_modules\/(.*)/,
-    /bower_components\/(.*)/
+    '(^|/)gradlew$',
+    '(^|/)gradle/wrapper/(.*)',
+    'node_modules/(.*)',
+    'bower_components/(.*)'
 ]
 

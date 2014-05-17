@@ -94,10 +94,18 @@ if (!vendored) {
 def vendoredRegex = { ->
     def p = []
     vendored.each { v ->
-        p << Pattern.quote(v)
+        def pat = Pattern.quote(v)
+        try {
+            Pattern.compile(pat)
+        } catch(e) {
+            error "vendored '${v}': invalid regular expression"
+        }
+        p << pat
     }
     p.join("|")
 }()
+
+
 
 try {
     Pattern.compile(vendoredRegex)
@@ -112,3 +120,4 @@ if (metadata.keySet().size() != 3) {
     newm.remove("binary_extensions")
     warning "found unused definitions: ${newm.keySet().join(', ')}"
 }
+

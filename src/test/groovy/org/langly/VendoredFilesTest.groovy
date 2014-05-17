@@ -3,26 +3,25 @@ package org.langly
 import org.junit.Test
 import org.junit.Ignore
 
-@Ignore("Not Ready Yet")
-class VendoredFilesTest {
+class VendorFilesTest {
     @Test
     void testGitFiles() {
-        assert new CodeFile(".gitignore").vendored()
-        assert new CodeFile(".gitattributes").vendored()
+        assert new CodeFile(".gitignore").vendor()
+        assert new CodeFile(".gitattributes").vendor()
     }
 
     @Test
     void testGradleFiles() {
-        assert new CodeFile("gradle/wrapper/gradle-wrapper.properties").vendored()
+        assert new CodeFile("gradle/wrapper/gradle-wrapper.properties").vendor()
     }
 
     @Test
     void testReadmeFiles() {
-        assert new CodeFile("README.md").vendored()
+        assert new CodeFile("README.md").vendor()
     }
 
     @Test
     void testCodeNotVendored() {
-        assert new CodeFile("Test.java").vendored()
+        assert !(new CodeFile("Test.java").vendor())
     }
 }
