@@ -1,6 +1,12 @@
 language: groovy
 jdk:
   - oraclejdk8
-install: TERM=dumb ./gradlew --version
+install: 
+  - TERM=dumb ./gradlew --version
+  - wget wget --quiet http://dl.bintray.com/groovy/maven/groovy-binary-2.3.0.zip -O groovy.zip
+  - unzip groovy.zip
+  - rm groovy.zip
+  - export GROOVY_HOME=$(pwd)/groovy-2.3.0"
 script:
   - TERM=dumb ./gradlew test
+  - ${GROOVY_HOME}/bin/groovy bin/lint.sh
