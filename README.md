@@ -1,4 +1,4 @@
-# langly
+# langly [![Build Status](https://travis-ci.org/DirectMyFile/langly.svg?branch=master)](https://travis-ci.org/DirectMyFile/langly)
 
 Language Utility Belt in Groovy.
 
