@@ -3,17 +3,6 @@ import groovy.util.DelegatingScript
 import groovy.json.JsonBuilder
 import java.util.regex.Pattern
 
-def mfile = new File("data/metadata.groovy")
-
-def cc = new CompilerConfiguration()
-cc.scriptBaseClass = DelegatingScript.class.name
-
-def shell = new GroovyShell(cc)
-def script = shell.parse(mfile) as DelegatingScript
-def metadata = [:]
-script.setDelegate(metadata)
-script.run()
-
 def error = { message ->
     println "[Metadata Linter] ERROR: " + message
     System.exit(1)
@@ -21,6 +10,31 @@ def error = { message ->
 
 def warning = { message ->
     println "[Metadata Linter] WARNING: " + message
+}
+
+def mfile = new File("data/metadata.groovy")
+
+def cc = new CompilerConfiguration()
+cc.scriptBaseClass = DelegatingScript.class.name
+
+def shell = new GroovyShell(cc)
+
+def script
+
+try {
+    script = shell.parse(mfile) as DelegatingScript
+} catch(e) {
+    println "[Metadata Linter] ERROR: failed to load metadata"
+    e.printStackTrace()
+    System.exit(0)
+}
+def metadata = [:]
+script.setDelegate(metadata)
+
+try {
+    script.run()
+} catch(e) {
+    error "unable to load metadata: ${e.class.name}: '${e.message}'"
 }
 
 if (metadata.languages == null) {
