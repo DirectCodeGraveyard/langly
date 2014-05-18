@@ -6,22 +6,22 @@ import org.junit.Ignore
 class VendorFilesTest {
     @Test
     void testGitFiles() {
-        assert new CodeFile(".gitignore").vendor()
-        assert new CodeFile(".gitattributes").vendor()
+        assert new FileBlob(".gitignore").vendor()
+        assert new FileBlob(".gitattributes").vendor()
     }
 
     @Test
     void testGradleFiles() {
-        assert new CodeFile("gradle/wrapper/gradle-wrapper.properties").vendor()
+        assert new FileBlob("gradle/wrapper/gradle-wrapper.properties").vendor()
     }
 
     @Test
     void testReadmeFiles() {
-        assert new CodeFile("README.md").vendor()
+        assert new FileBlob("README.md").vendor()
     }
 
     @Test
     void testCodeNotVendored() {
-        assert !(new CodeFile("Test.java").vendor())
+        assert !(new FileBlob("Test.java").vendor())
     }
 }

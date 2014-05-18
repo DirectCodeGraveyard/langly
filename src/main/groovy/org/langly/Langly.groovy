@@ -35,7 +35,7 @@ class Langly {
         vendorPattern = Pattern.compile(vendor().join("|"))
     }
 
-    static boolean isLanguage(Language lang, CodeFile file) {
+    static boolean isLanguage(Language lang, FileBlob file) {
         for (String ext in lang.extensions) {
             if (file.name().endsWith(ext)) {
                 return true
@@ -66,7 +66,7 @@ class Langly {
         return false
     }
 
-    static Language detect(CodeFile file) {
+    static Language detect(FileBlob file) {
         for (language in languages) {
             if (isLanguage(language, file)) {
                 return language
@@ -107,7 +107,7 @@ class Langly {
         return script
     }
 
-    static boolean isVendorFile(CodeFile file) {
+    static boolean isVendorFile(FileBlob file) {
         file.name() ==~ vendorPattern
     }
 }

@@ -18,7 +18,7 @@ class Language {
         }
     }
 
-    boolean check(CodeFile file) {
+    boolean check(FileBlob file) {
         file.detect() == this
     }
 }

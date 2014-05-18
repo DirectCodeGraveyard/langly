@@ -1,24 +1,29 @@
 package org.langly
 
+import java.nio.file.Path
 import groovy.transform.CompileStatic
 
 @CompileStatic
-class CodeFile {
+class FileBlob {
     private File file
     private String code
     private String name
 
-    CodeFile(String filename) {
+    FileBlob(String filename) {
         this.name = filename
     }
 
-    CodeFile(String filename, String code) {
+    FileBlob(String filename, String code) {
         this.name = filename
         this.code = code
     }
 
-    CodeFile(File file) {
+    FileBlob(File file) {
         this.file = file
+    }
+
+    FileBlob(Path path) {
+        this.file = path.toFile()
     }
 
     Reader code() {
