@@ -2,7 +2,7 @@ package org.langly
 
 import org.codehaus.groovy.control.CompilerConfiguration
 import groovy.transform.CompileStatic
-import java.util.regex.Pattern
+import java.util.regex.*
 
 @CompileStatic
 class Langly {
@@ -47,6 +47,20 @@ class Langly {
                 return true
             }
         }
+        
+        def reader = file.code()
+        
+        def firstLine = reader.readLine()
+        
+        /* First Line is a Shebang, will parse it */
+        if (firstLine.startsWith("#!")) {
+            /* Find Interpreter and Compare */
+            def interpreter = parseShebang(firstLine)
+            if (interpreter && interpreter in language.interpreters) {
+                return true
+            }
+        }
+        
         return false
     }
 
@@ -74,6 +88,21 @@ class Langly {
 
     static List<String> binaryExtensions() {
         metadata.binary_extensions as List<String>
+    }
+    
+    static String parseShebang(String line) {
+        def scanner = new Scanner(line)
+        String script = null
+        String path
+        if ((path = scanner.next(/^#!\s*\S+/))) {
+            script = path.split("/").last()
+            if (script == "env") {
+                scanner.skip(/\s+/)
+                script = scanner.next(/\S+/)
+            }
+        }
+        scanner.close()
+        return script
     }
 
     static boolean isVendorFile(CodeFile file) {

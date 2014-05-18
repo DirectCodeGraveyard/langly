@@ -10,6 +10,7 @@ class Language {
     String type = "programming"
     String mimetype = "text/plain"
     List<String> filenames = []
+    List<String> interpreters = []
 
     Language(Map map) {
         map.entrySet().each { Map.Entry entry ->

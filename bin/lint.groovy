@@ -93,6 +93,12 @@ metadata.languages.each { lang ->
             warning "language '${lang.name}': no sample for filename '${filename}'"
         }
     }
+    
+    def interpreters = lang.interpreters
+    
+    if (interpreters != null && interpreters.empty) {
+        warning "language '${lang.name}': empty 'interpreters' is superfluous"
+    }
 }
 
 def binaryExt = metadata.binary_extensions

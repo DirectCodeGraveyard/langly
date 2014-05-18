@@ -12,6 +12,9 @@ languages = [
         ],
         related: [
             "Java"
+        ],
+        interpreters: [
+            "groovy"    
         ]
     ],
     [
@@ -27,6 +30,9 @@ languages = [
         ],
         filenames: [
             "Jakefile"
+        ],
+        interpreters: [
+            "node"
         ]
     ],
     [
@@ -42,12 +48,18 @@ languages = [
         ],
         filenames: [
             "Rakefile"
+        ],
+        interpreters: [
+            "ruby"    
         ]
     ],
     [
         name: "Python",
         extensions: [
             ".py"
+        ],
+        interpreters: [
+            "python"    
         ]
     ],
     [
@@ -119,10 +131,19 @@ languages = [
         ]
     ],
     [
-        name: "Bash",
+        name: "Shell",
         extensions: [
             ".sh",
-            ".bash"
+            ".bash",
+            ".zsh"
+        ],
+        interpreters: [
+            "bash",
+            "sh",
+            "zsh"
+        ],
+        filenames: [
+            "Dockerfile"    
         ]
     ],
     [
@@ -179,6 +200,9 @@ languages = [
             ".lua",
             ".nse",
             ".rbxs"
+        ],
+        interpreters: [
+            "lua"    
         ]
     ],
     [
