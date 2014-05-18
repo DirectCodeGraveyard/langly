@@ -191,26 +191,13 @@ binary_extensions = [
 
 /*
   Regular Expressions Matching Vendor Files
-  Most of this is copied from liguist (https://github.com/github/linguist/blob/master/lib/linguist/vendor.yml)
   No escaping is necessary, as it is auto-quoted.
-  These are used for things like git repositories
 */
 vendor = [
-    /* LICENSE, README, git config files */
-    '^COPYING$',
-    'LICENSE$',
-    'License$',
-    '.gitattributes$',
-    '.gitignore$',
-    '.gitmodules$',
-    '^README$',
-    '^readme$',
-    /* Samples */
-    '^[Ss]amples/(.*)',
-    /* Gradle */
-    '(^|/)gradlew$',
-    '(^|/)gradle/wrapper/(.*)',
-    'node_modules/(.*)',
-    'bower_components/(.*)'
+    'README',
+    'README.(.*)',
+    '.gitignore',
+    '.gitattributes',
+    '.gitmodules',
+    '(^|/)gradle/wrapper/(.*)'
 ]
-

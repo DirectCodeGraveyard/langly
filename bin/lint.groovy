@@ -81,26 +81,25 @@ if (binaryExt == null) {
     error "'binary_extensions' not defined"
 }
 
-def vendored = metadata.vendored
+def vendor = metadata.vendor
 
-if (vendored == null) {
-     error "'vendored' not defined"
+if (vendor == null) {
+     error "'vendor' not defined"
 }
 
-if (!vendored) {
-     error "'vendored' is empty"
+if (!vendor) {
+     error "'vendor' is empty"
 }
 
-def vendoredRegex = { ->
+def vendorRegex = { ->
     def p = []
-    vendored.each { v ->
-        def pat = Pattern.quote(v)
+    vendor.each { v ->
         try {
-            Pattern.compile(pat)
+            Pattern.compile(v)
         } catch(e) {
-            error "vendored '${v}': invalid regular expression"
+            error "vendor '${v}': invalid regular expression"
         }
-        p << pat
+        p << v
     }
     p.join("|")
 }()
@@ -108,14 +107,14 @@ def vendoredRegex = { ->
 
 
 try {
-    Pattern.compile(vendoredRegex)
+    Pattern.compile(vendorRegex)
 } catch(e) {
-    error "vendored: generated expression '${vendoredRegex}' is invalid"
+    error "vendor: generated expression '${vendorRegex}' is invalid"
 }
 
 if (metadata.keySet().size() != 3) {
     def newm = metadata.clone()
-    newm.remove("vendored")
+    newm.remove("vendor")
     newm.remove("languages")
     newm.remove("binary_extensions")
     warning "found unused definitions: ${newm.keySet().join(', ')}"

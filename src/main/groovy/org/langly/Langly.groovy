@@ -8,7 +8,7 @@ import java.util.regex.Pattern
 class Langly {
     static Map<String, Object> metadata
 
-    static String vendorPattern
+    private static Pattern vendorPattern
 
     static {
         loadMetadata()
@@ -32,7 +32,7 @@ class Langly {
             }
             l
         }()
-        vendorPattern = vendor().collect { String it -> Pattern.quote(it) }.join("|")
+        vendorPattern = Pattern.compile(vendor().join("|"))
     }
 
     static boolean isLanguage(Language lang, CodeFile file) {
@@ -71,6 +71,6 @@ class Langly {
     }
 
     static boolean isVendorFile(CodeFile file) {
-        file.name().matches(vendorPattern)
+        vendorPattern.matcher(file.name()).matches()
     }
 }
