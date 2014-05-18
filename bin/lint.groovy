@@ -57,6 +57,8 @@ metadata.languages.each { lang ->
     } else {
         langnames << lang.name
     }
+    
+    def sampleDir = new File("data/samples/${lang.name}/")
 
     if (lang.extensions == null) {
         error "language '${lang.name}': 'extensions' is not defined"
@@ -71,19 +73,25 @@ metadata.languages.each { lang ->
              warning "language '${lang.name}': extension '${ext}': does not start with a '.', possible typo"
         }
     }
-
-    def sample = new File("data/samples/${lang.name}/test${lang.extensions.first()}")
-
-    if (!sample.exists()) {
-        warning "language '${lang.name}': no test sample exists"
-    } else {
-       if (sample.text.trim() == "") {
-           warning "language '${lang.name}': test sample is empty"
-       }
+    
+    def primaryExt = lang.extensions.first()
+    
+    if (sampleDir.list().findAll { it ->
+        it.endsWith(primaryExt)
+    }.empty) {
+        warning "language '${lang.name}': no sample for primary extension '${primaryExt}'"
     }
+
     def filenames = lang.filenames
     if (filenames != null && filenames.empty) {
         warning "language '${lang.name}': empty 'filenames' is superfluous"
+    }
+    
+    for (filename in filenames) {
+        def sample = new File(sampleDir, filename)
+        if (!sample.exists()) {
+            warning "language '${lang.name}': no sample for filename '${filename}'"
+        }
     }
 }
 
