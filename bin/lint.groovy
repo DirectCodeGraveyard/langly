@@ -73,6 +73,10 @@ metadata.languages.each { lang ->
            warning "language '${lang.name}': test sample is empty"
        }
     }
+    def filenames = lang.filenames
+    if (filenames != null && filenames.empty) {
+        warning "language '${lang.name}': empty 'filenames' is superfluous"
+    }
 }
 
 def binaryExt = metadata.binary_extensions
