@@ -3,6 +3,10 @@ import groovy.util.DelegatingScript
 import groovy.json.JsonBuilder
 import java.util.regex.Pattern
 
+def languageValid = [ "name", "extensions", "filenames", "mimetype", "interpreters", "related", "type" ]
+
+def valid = [ "languages", "vendor", "binary_extensions" ]
+
 def error = { message ->
     println "[Metadata Linter] ERROR: " + message
     System.exit(1)
@@ -51,13 +55,13 @@ metadata.languages.each { lang ->
     if (lang.name == null) {
         error "languages: a language is missing a name (cannot be identified due to no name)"
     }
-    
+
     if (lang.name in langnames) {
         error "languages: '${lang.name}' was defined more than once"
     } else {
         langnames << lang.name
     }
-    
+
     def sampleDir = new File("data/samples/${lang.name}/")
 
     if (lang.extensions == null) {
@@ -73,9 +77,9 @@ metadata.languages.each { lang ->
              warning "language '${lang.name}': extension '${ext}': does not start with a '.', possible typo"
         }
     }
-    
+
     def primaryExt = lang.extensions.first()
-    
+
     if (sampleDir.list().findAll { it ->
         it.endsWith(primaryExt)
     }.empty) {
@@ -86,18 +90,26 @@ metadata.languages.each { lang ->
     if (filenames != null && filenames.empty) {
         warning "language '${lang.name}': empty 'filenames' is superfluous"
     }
-    
+
     for (filename in filenames) {
         def sample = new File(sampleDir, filename)
         if (!sample.exists()) {
             warning "language '${lang.name}': no sample for filename '${filename}'"
         }
     }
-    
+
     def interpreters = lang.interpreters
-    
+
     if (interpreters != null && interpreters.empty) {
         warning "language '${lang.name}': empty 'interpreters' is superfluous"
+    }
+
+    def newm = lang.clone()
+
+    languageValid.each { it -> newm.remove(it) }
+
+    if (newm) {
+        warning "language '${lang.name}': found unused definitions: ${newm.keySet().join(', ')}"
     }
 }
 
@@ -144,9 +156,6 @@ try {
 
 if (metadata.keySet().size() != 3) {
     def newm = metadata.clone()
-    newm.remove("vendor")
-    newm.remove("languages")
-    newm.remove("binary_extensions")
+    valid.each { it -> newm.remove(it) }
     warning "found unused definitions: ${newm.keySet().join(', ')}"
 }
-

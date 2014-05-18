@@ -44,6 +44,7 @@ class FileBlob {
 
     String mimetype() {
         def detected = detect()
+
         if (detected) {
             return detected.mimetype ?: "text/plain"
         } else {
