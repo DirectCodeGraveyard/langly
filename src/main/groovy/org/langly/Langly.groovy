@@ -47,20 +47,20 @@ class Langly {
                 return true
             }
         }
-        
+
         def reader = file.code()
-        
+
         def firstLine = reader.readLine()
-        
+
         /* First Line is a Shebang, will parse it */
         if (firstLine.startsWith("#!")) {
             /* Find Interpreter and Compare */
             def interpreter = parseShebang(firstLine)
-            if (interpreter && interpreter in language.interpreters) {
+            if (interpreter && interpreter in lang.interpreters) {
                 return true
             }
         }
-        
+
         return false
     }
 

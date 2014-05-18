@@ -18,7 +18,7 @@ class CodeFile {
     }
 
     CodeFile(File file) {
-        this.name = file.name
+        this.file = file
     }
 
     Reader code() {
