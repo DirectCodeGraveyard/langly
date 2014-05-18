@@ -52,6 +52,8 @@ class Langly {
 
         def firstLine = reader.readLine()
 
+        reader.close()
+
         /* First Line is a Shebang, will parse it */
         if (firstLine.startsWith("#!")) {
             /* Find Interpreter and Compare */
