@@ -14,7 +14,7 @@ languages = [
             "Java"
         ],
         interpreters: [
-            "groovy"    
+            "groovy"
         ]
     ],
     [
@@ -50,7 +50,7 @@ languages = [
             "Rakefile"
         ],
         interpreters: [
-            "ruby"    
+            "ruby"
         ]
     ],
     [
@@ -59,7 +59,7 @@ languages = [
             ".py"
         ],
         interpreters: [
-            "python"    
+            "python"
         ]
     ],
     [
@@ -143,7 +143,7 @@ languages = [
             "zsh"
         ],
         filenames: [
-            "Dockerfile"    
+            "Dockerfile"
         ]
     ],
     [
@@ -202,7 +202,7 @@ languages = [
             ".rbxs"
         ],
         interpreters: [
-            "lua"    
+            "lua"
         ]
     ],
     [
@@ -290,9 +290,17 @@ binary_extensions = [
   No escaping is necessary, as it is auto-quoted.
 */
 vendor = [
-    'README(.*)',
-    '.gitignore',
-    '.gitattributes',
-    '.gitmodules',
-    '(^|/)gradle/wrapper/(.*)'
+    'README(.*)$', /* README */
+    '.gitignore$', /* Git Ignore */
+    '.gitattributes$', /* Git Attributes */
+    '.gitmodules$', /* Git Submodules */
+    '(^|/)gradle/wrapper/(.*)$', /* Gradle Wrapper */
+    '^(.*).min.(css|js)$' /* Minified JS/CSS */,
+    'node_modules/(.*)$',
+    '(.*?).d.ts$',
+    '^debian/',
+    'bower_components/(.*)$',
+    '^[Dd]ependencies/',
+    '(^|/)cache/',
+    '(^|/)gradlew($|.bat)'
 ]

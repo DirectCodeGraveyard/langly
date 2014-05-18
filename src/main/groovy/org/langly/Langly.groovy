@@ -91,7 +91,7 @@ class Langly {
     static List<String> binaryExtensions() {
         metadata.binary_extensions as List<String>
     }
-    
+
     static String parseShebang(String line) {
         def scanner = new Scanner(line)
         String script = null
@@ -108,6 +108,6 @@ class Langly {
     }
 
     static boolean isVendorFile(CodeFile file) {
-        vendorPattern.matcher(file.name()).matches()
+        file.name() ==~ vendorPattern
     }
 }

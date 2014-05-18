@@ -12,8 +12,8 @@ class Language {
     List<String> filenames = []
     List<String> interpreters = []
 
-    Language(Map map) {
-        map.entrySet().each { Map.Entry entry ->
+    Language(Map<?, ?> map) {
+        map.entrySet().each { Map.Entry<?, ?> entry ->
 	    setProperty(entry.key as String, entry.value)
         }
     }
