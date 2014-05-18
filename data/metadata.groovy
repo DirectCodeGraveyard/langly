@@ -266,8 +266,7 @@ binary_extensions = [
   No escaping is necessary, as it is auto-quoted.
 */
 vendor = [
-    'README',
-    'README.(.*)',
+    'README(.*)',
     '.gitignore',
     '.gitattributes',
     '.gitmodules',
