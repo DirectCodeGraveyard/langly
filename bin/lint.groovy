@@ -45,9 +45,17 @@ if (!(metadata.languages instanceof List)) {
     error "'languages' is not a list"
 }
 
+def langnames = []
+
 metadata.languages.each { lang ->
     if (lang.name == null) {
         error "languages: a language is missing a name (cannot be identified due to no name)"
+    }
+    
+    if (lang.name in langnames) {
+        error "languages: '${lang.name}' was defined more than once"
+    } else {
+        langnames << lang.name
     }
 
     if (lang.extensions == null) {
