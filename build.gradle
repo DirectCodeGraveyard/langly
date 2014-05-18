@@ -28,11 +28,5 @@ sourceSets {
             srcDir "${projectDir}/data/"
         }
     }
-
-    test {
-        resources {
-            srcDir "${projectDir}/data/samples"
-        }
-    }
 }
 

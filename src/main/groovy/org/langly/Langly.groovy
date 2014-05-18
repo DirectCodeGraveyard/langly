@@ -41,6 +41,12 @@ class Langly {
                 return true
             }
         }
+
+        for (String filename in lang.filenames) {
+            if (filename == file.name()) {
+                return true
+            }
+        }
         return false
     }
 

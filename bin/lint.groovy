@@ -81,6 +81,10 @@ if (binaryExt == null) {
     error "'binary_extensions' not defined"
 }
 
+if (!binaryExt) {
+    error "'binary_extensions' is empty"
+}
+
 def vendor = metadata.vendor
 
 if (vendor == null) {

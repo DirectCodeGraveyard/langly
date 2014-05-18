@@ -6,9 +6,10 @@ import groovy.transform.CompileStatic
 class Language {
     String name
     List<String> extensions
-    List<String> related
-    String type
-    String mimetype
+    List<String> related = []
+    String type = "programming"
+    String mimetype = "text/plain"
+    List<String> filenames = []
 
     Language(Map map) {
         map.entrySet().each { Map.Entry entry ->

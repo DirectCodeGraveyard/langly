@@ -5,14 +5,13 @@ import org.junit.Test
 class DetectionTest {
     @Test
     void testSamplesDetection() {
-        for (lang in Langly.languages) {
-            def filename = "test${lang.extensions.first()}"
-            def stream = getClass().classLoader.getResourceAsStream("samples/${lang.name}/${filename}")
-            if (stream != null) {
-                def code = stream.text
-                def file = new CodeFile(filename, code)
-                assert lang.check(file), "Failed to detect language '${lang.name}' from sample!"
-            }
-	}
+        def samplesDir = new File("data/samples")
+        samplesDir.eachFile { langDir ->
+           def lang = Langly.language(langDir.name)
+           langDir.eachFile { file ->
+               def cfile = new CodeFile(file)
+               assert cfile.language() == lang, "'${file.name}' with language '${lang.name}' was not able to be detected"
+           }
+        }
     }
 }

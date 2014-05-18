@@ -24,6 +24,9 @@ languages = [
         name: "JavaScript",
         extensions: [
             ".js"
+        ],
+        filenames: [
+            "Jakefile"
         ]
     ],
     [
@@ -36,6 +39,9 @@ languages = [
         name: "Ruby",
         extensions: [
             ".rb"
+        ],
+        filenames: [
+            "Rakefile"
         ]
     ],
     [
@@ -49,12 +55,18 @@ languages = [
         type: "data",
         extensions: [
             ".json"
+        ],
+        filenames: [
+            ".jshintrc"
         ]
     ],
     [
         name: "CoffeeScript",
         extensions: [
             ".coffee"
+        ],
+        filenames: [
+            "Cakefile"
         ]
     ],
     [
@@ -176,12 +188,15 @@ languages = [
             ".php3",
             ".php4",
             ".php5"
+        ],
+        filenames: [
+            "Phakefile"
         ]
     ],
     [
         name: "Dogescript",
         extensions: [
-            ".djs"    
+            ".djs"
         ]
     ],
     [
@@ -195,10 +210,10 @@ languages = [
         name: "JSON5",
         type: "data",
         extensions: [
-            ".json5"    
+            ".json5"
         ],
         related: [
-            "JSON"    
+            "JSON"
         ]
     ],
     [
@@ -213,7 +228,7 @@ languages = [
         name: "XML",
         type: "markup",
         extensions: [
-            ".xml"    
+            ".xml"
         ]
     ],
     [
@@ -227,10 +242,10 @@ languages = [
         name: "Jade",
         type: "markup",
         extensions: [
-            ".jade"    
+            ".jade"
         ],
         related: [
-            "HTML"    
+            "HTML"
         ]
     ]
 ]
