@@ -14,17 +14,17 @@ class Utils {
     }
 
     static String parseShebang(String line) {
-        def scanner = new Scanner(line)
+        def s = StringScanner.of(line)
         String script = null
         String path
-        if ((path = scanner.next(/^#!\s*\S+/))) {
+        if ((path = s.scan(/^#!\s*\S+/))) {
             script = path.split("/").last()
             if (script == "env") {
-                scanner.skip(/\s+/)
-                script = scanner.next(/\S+/)
+                s.skip(/\s+/)
+                script = s.scan(/\S+/)
             }
         }
-        scanner.close()
+        s.close()
         return script
     }
 }
