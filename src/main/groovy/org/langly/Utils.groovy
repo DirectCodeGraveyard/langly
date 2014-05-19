@@ -23,6 +23,9 @@ class Utils {
                 s.skip(/\s+/)
                 script = s.scan(/\S+/)
             }
+            if (script) {
+                script = (script =~ /[^\d]+/)[0]
+            }
         }
         s.close()
         return script
