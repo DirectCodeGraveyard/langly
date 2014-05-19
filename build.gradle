@@ -20,11 +20,10 @@ test {
     }
 }
 
-sourceSets {
-    main {
-        resources {
-            srcDir "${projectDir}/data/"
-        }
+processResources {
+    from "data/"
+    from("samples/") {
+        into("samples/")
     }
 }
 

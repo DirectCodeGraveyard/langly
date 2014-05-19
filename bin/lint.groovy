@@ -62,7 +62,7 @@ metadata.languages.each { lang ->
         langnames << lang.name
     }
 
-    def sampleDir = new File("data/samples/${lang.name}/")
+    def sampleDir = new File("samples/${lang.name}/")
 
     if (lang.extensions == null) {
         error "language '${lang.name}': 'extensions' is not defined"

@@ -5,7 +5,7 @@ import org.junit.Test
 class DetectionTest {
     @Test
     void testSamplesDetection() {
-        def samplesDir = new File("data/samples")
+        def samplesDir = new File("samples/")
         samplesDir.eachFile { langDir ->
            assert Language[langDir.name] != null, "Sample Directory '${langDir.name}' could not be matched to a language"
            langDir.eachFile { file ->
