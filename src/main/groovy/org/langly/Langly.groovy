@@ -58,7 +58,7 @@ class Langly {
         /* First Line is a Shebang, will parse it */
         if (firstLine != null && firstLine.startsWith("#!")) {
             /* Find Interpreter and Compare */
-            def interpreter = parseShebang(firstLine)
+            def interpreter = Utils.parseShebang(firstLine)
             if (interpreter && interpreter in lang.interpreters) {
                 return true
             }
@@ -91,21 +91,6 @@ class Langly {
 
     static List<String> binaryExtensions() {
         metadata.binary_extensions as List<String>
-    }
-
-    static String parseShebang(String line) {
-        def scanner = new Scanner(line)
-        String script = null
-        String path
-        if ((path = scanner.next(/^#!\s*\S+/))) {
-            script = path.split("/").last()
-            if (script == "env") {
-                scanner.skip(/\s+/)
-                script = scanner.next(/\S+/)
-            }
-        }
-        scanner.close()
-        return script
     }
 
     static boolean isVendorFile(FileBlob file) {
