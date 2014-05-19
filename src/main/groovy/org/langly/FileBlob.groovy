@@ -63,4 +63,12 @@ class FileBlob {
     Language language() {
         detect()
     }
+
+    static FileBlob getAt(String filename) {
+        return new FileBlob(filename)
+    }
+
+    static FileBlob getAt(File file) {
+        return new FileBlob(file)
+    }
 }

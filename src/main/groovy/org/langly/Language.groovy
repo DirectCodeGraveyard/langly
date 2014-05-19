@@ -21,4 +21,8 @@ class Language {
     boolean check(FileBlob file) {
         file.detect() == this
     }
+
+    static Language getAt(String name) {
+        Langly.language(name)
+    }
 }
