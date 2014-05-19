@@ -8,7 +8,7 @@ import java.util.regex.*
 class Langly {
     static Map<String, Object> metadata
 
-    private static Pattern vendorPattern
+    static Pattern vendorPattern
 
     static {
         loadMetadata()
@@ -55,7 +55,7 @@ class Langly {
         reader.close()
 
         /* First Line is a Shebang, will parse it */
-        if (firstLine.startsWith("#!")) {
+        if (firstLine != null && firstLine.startsWith("#!")) {
             /* Find Interpreter and Compare */
             def interpreter = parseShebang(firstLine)
             if (interpreter && interpreter in lang.interpreters) {
@@ -108,6 +108,6 @@ class Langly {
     }
 
     static boolean isVendorFile(FileBlob file) {
-        file.name() ==~ vendorPattern
+        file.path() ==~ vendorPattern
     }
 }

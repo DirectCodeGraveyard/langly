@@ -295,12 +295,16 @@ vendor = [
     '.gitattributes$', /* Git Attributes */
     '.gitmodules$', /* Git Submodules */
     '(^|/)gradle/wrapper/(.*)$', /* Gradle Wrapper */
-    '^(.*).min.(css|js)$' /* Minified JS/CSS */,
+    '(.*).min.(css|js)$' /* Minified JS/CSS */,
     'node_modules/(.*)$',
     '(.*?).d.ts$',
     '^debian/',
-    'bower_components/(.*)$',
+    '(^|/)bower_components/(.*)$',
     '^[Dd]ependencies/',
     '(^|/)cache/',
-    '(^|/)gradlew($|.bat)'
+    'gradlew($|.bat)',
+    'data/(.*)',
+    'build/(.*)',
+    '.git/(.*)',
+    '.travis.yml$'
 ]

@@ -31,7 +31,11 @@ class FileBlob {
     }
 
     String name() {
-        name ?: file.name
+        name ? path().split("/").last() : file.name
+    }
+
+    String path() {
+        name ?: file.path
     }
 
     boolean vendor() {
