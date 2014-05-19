@@ -1,8 +1,11 @@
 package org.langly
 
+import groovy.transform.CompileStatic
+
 /**
  * Port of StringScanner that uses Scanner
  */
+@CompileStatic
 class StringScanner {
     private final Scanner scanner
 
