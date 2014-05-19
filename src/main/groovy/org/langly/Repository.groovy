@@ -1,8 +1,7 @@
 package org.langly
 
-import groovy.transform.CompileStatic
 import groovy.transform.CompileDynamic
-import groovy.io.FileType
+import groovy.transform.CompileStatic
 
 @CompileStatic
 class Repository {
