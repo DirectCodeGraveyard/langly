@@ -1,8 +1,9 @@
 package org.langly
 
-import org.codehaus.groovy.control.CompilerConfiguration
 import groovy.transform.CompileStatic
-import java.util.regex.*
+import org.codehaus.groovy.control.CompilerConfiguration
+
+import java.util.regex.Pattern
 
 @CompileStatic
 class Langly {
@@ -25,13 +26,13 @@ class Langly {
         script.setDelegate(meta)
         script.run()
         metadata = meta
-        languages = { ->
-	    def l = []
+        languages = ({ ->
+	        def l = []
             metadata.languages.each { Map it ->
-		l << new Language(it)
+		        l << new Language(it)
             }
             l
-        }()
+        })()
         vendorPattern = Pattern.compile(vendor().join("|"))
     }
 
